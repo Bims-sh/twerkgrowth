@@ -1,20 +1,21 @@
 package dev.dasischbims.twerkgrowth.util
 
 import dev.dasischbims.twerkgrowth.INSTANCE
-import org.bukkit.Color
+import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.entity.Player
 
 class Logger {
-    // should have the option chat or console (usage: Logger.chat.info("Hello World!")) or Logger.console.error("Hello World!"))
-
     companion object {
-        val chat = ChatLogger() // the chat logger sends to a specific player or to all players if no player is specified
+        val chat = ChatLogger()
         val console = ConsoleLogger()
     }
 
     class ChatLogger {
         fun send(message: String, player: Player) {
-            player.sendPluginMessage(INSTANCE, "twerkgrowth:chat", message.toByteArray())
+            val miniMessage = MiniMessage.miniMessage()
+            val parsed = miniMessage.deserialize(message)
+
+            player.sendMessage(parsed)
         }
     }
 

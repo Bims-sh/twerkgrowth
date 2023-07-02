@@ -7,6 +7,8 @@ lateinit var INSTANCE: Main
 class Main : JavaPlugin() {
     override fun onEnable() {
         INSTANCE = this
+
+        initPlugin()
         Logger.console.info("Plugin enabled!")
     }
 
@@ -16,6 +18,7 @@ class Main : JavaPlugin() {
     }
 
     override fun onDisable() {
+        INSTANCE.saveConfig()
         Logger.console.info("Plugin disabled!")
     }
 }

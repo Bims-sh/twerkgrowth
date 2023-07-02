@@ -1,0 +1,15 @@
+name: TwerkGrowth
+version: 1.0
+main: dev.dasischbims.twerkgrowth.Main
+api-version: "1.20"
+commands:
+  tgr:
+    description: Reloads the config
+    usage: /twerkgrowth:reload
+    permission: twerkgrowth.reload
+    permission-message: You don't have permission to use this command!
+    aliases: [ tgr ]
+permissions:
+  twerkgrowth.reload:
+    description: Allows you to reload the config
+    default: op
