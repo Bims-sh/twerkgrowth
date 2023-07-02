@@ -1,0 +1,4 @@
+name: Twerk Growth
+version: '${project.version}'
+main: dev.dasischbims.twerkgrowth.Main
+api-version: 1.20
