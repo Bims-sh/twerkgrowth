@@ -1,7 +1,7 @@
 # TwerkGrowth Plugin
-TwerkGrowth is a Minecraft 1.20 plugin that allows players to grow trees and plants by twerking on them. It adds a fun and unique way to interact with the game's environment and encourages players to engage in creative and entertaining gameplay.
+TwerkGrowth is a Minecraft 1.20 plugin that allows players to grow trees and plants by twerking on them. It adds a fun and unique way to interact with the game's environment.
 
-Heavily inspired by the idea of the [TwerkItMeal](https://github.com/ticticboooom/TwerkItMeal) mod which had its last release for Minecraft 1.16.4.
+Heavily inspired by the idea of the [TwerkItMeal](https://github.com/ticticboooom/TwerkItMeal) mod which had its last release for Minecraft 1.16.4 back in July of 2022.
 
 ## Table of Contents
 - [Features](#features)
@@ -14,9 +14,9 @@ Heavily inspired by the idea of the [TwerkItMeal](https://github.com/ticticboooo
 - [License](#license)
 
 ## Features
-Grow trees and plants by twerking on them
-Configurable radius for the twerking effect
-Adjustable cooldown period between twerks
+- Grow trees and plants by twerking on them
+- Configurable radius for the twerking effect
+- Adjustable cooldown period between twerks
 
 ## Installation
 1. Download the latest version of TwerkGrowth from the [releases page](https://github.com/DasIschBims/twerkgrowth/releases/latest).
