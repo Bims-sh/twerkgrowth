@@ -5,10 +5,10 @@ api-version: "1.20"
 commands:
   tgr:
     description: Reloads the config
-    usage: /twerkgrowth:reload
+    usage: /twerkgrowthreload or /tgr
     permission: twerkgrowth.reload
     permission-message: You don't have permission to use this command!
-    aliases: [ tgr ]
+    aliases: [ twerkgrowthreload ]
 permissions:
   twerkgrowth.reload:
     description: Allows you to reload the config

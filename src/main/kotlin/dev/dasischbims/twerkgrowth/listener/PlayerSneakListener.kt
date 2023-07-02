@@ -7,6 +7,7 @@ import org.bukkit.block.BlockFace
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerToggleSneakEvent
+import org.bukkit.metadata.FixedMetadataValue
 
 class PlayerSneakListener: Listener {
     @EventHandler
@@ -14,13 +15,21 @@ class PlayerSneakListener: Listener {
         val player = event.player
         if (player.isSneaking) return
 
-        val world = player.world
-        val block = player.location.block
-        val radius = INSTANCE.config.get("radius")
+        val cooldownDuration = INSTANCE.config.get("cooldown")?: return Logger.console.warn("Cooldown time not found, please check your config.yml!")
+        val cooldown = if (cooldownDuration !is Double) cooldownDuration.toString().toDoubleOrNull() ?: return else cooldownDuration
+        val cooldownStartTime = player.getMetadata("tgr_cooldown").firstOrNull()?.asLong() ?: 0
+        val currentTime = System.currentTimeMillis()
 
-        if (radius !is Double) return Logger.console.warn("Radius is not an double, please check your config.yml!")
+        if (currentTime >= cooldownStartTime + cooldown * 1000) {
+            val world = player.world
+            val block = player.location.block
+            val radius = INSTANCE.config.get("radius")
 
-        val growBlock = GrowthHelper().getNearestGrowable(world, block.location, radius) ?: return
-        growBlock.applyBoneMeal(BlockFace.UP)
+            if (radius !is Double) return Logger.console.warn("Radius is not an double, please check your config.yml!")
+
+            val growBlock = GrowthHelper().getNearestGrowable(world, block.location, radius) ?: return
+            growBlock.applyBoneMeal(BlockFace.UP)
+            player.setMetadata("tgr_cooldown", FixedMetadataValue(INSTANCE, currentTime))
+        }
     }
 }

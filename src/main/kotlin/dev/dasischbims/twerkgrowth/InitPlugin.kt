@@ -3,6 +3,7 @@ package dev.dasischbims.twerkgrowth
 import dev.dasischbims.twerkgrowth.commands.ReloadPlugin
 import dev.dasischbims.twerkgrowth.listener.PlayerSneakListener
 import org.bukkit.Bukkit
+
 internal fun initPlugin() {
     INSTANCE.saveDefaultConfig()
     registerListeners()
@@ -11,7 +12,6 @@ internal fun initPlugin() {
 
 internal fun registerCommands() {
     INSTANCE.getCommand("tgr")?.setExecutor(ReloadPlugin())
-    INSTANCE.getCommand("tgr")?.tabCompleter = ReloadPlugin()
 }
 
 internal fun registerListeners() {
