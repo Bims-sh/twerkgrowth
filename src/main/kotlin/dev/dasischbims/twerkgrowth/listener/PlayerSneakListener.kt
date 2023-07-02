@@ -23,9 +23,7 @@ class PlayerSneakListener: Listener {
         if (currentTime >= cooldownStartTime + cooldown * 1000) {
             val world = player.world
             val block = player.location.block
-            val radius = INSTANCE.config.get("radius")
-
-            if (radius !is Double) return Logger.console.warn("Radius is not an double, please check your config.yml!")
+            val radius = if (INSTANCE.config.get("radius") !is Double) return Logger.console.warn("Radius is not an double, please check your config.yml!") else INSTANCE.config.get("radius") as Double
 
             val growBlock = GrowthHelper().getNearestGrowable(world, block.location, radius) ?: return
             growBlock.applyBoneMeal(BlockFace.UP)

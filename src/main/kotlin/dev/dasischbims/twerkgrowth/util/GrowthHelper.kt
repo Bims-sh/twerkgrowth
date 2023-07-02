@@ -23,7 +23,15 @@ class GrowthHelper {
                 for (k in -rad..rad) {
                     val block = world.getBlockAt(x + i, y + j, z + k)
                     if (isGrowable(block)) {
-                        blocks.add(block)
+                        if (block.type in plantBlocks) {
+                            if (block.blockData.asString.contains("age=7")) {
+                                continue
+                            } else {
+                                blocks.add(block)
+                            }
+                        } else if (block.type in saplingBlocks) {
+                            blocks.add(block)
+                        }
                     }
                 }
             }
@@ -48,26 +56,29 @@ class GrowthHelper {
         }
     }
 
-    private fun isGrowable(block: Block): Boolean {
-        val growableBlocks = listOf(
-            Material.OAK_SAPLING,
-            Material.SPRUCE_SAPLING,
-            Material.BIRCH_SAPLING,
-            Material.JUNGLE_SAPLING,
-            Material.ACACIA_SAPLING,
-            Material.DARK_OAK_SAPLING,
-            Material.CRIMSON_FUNGUS,
-            Material.WARPED_FUNGUS,
-            Material.CHERRY_SAPLING,
-            Material.MANGROVE_PROPAGULE,
-            Material.CARROT,
-            Material.POTATO,
-            Material.WHEAT,
-            Material.BEETROOTS,
-            Material.MELON_STEM,
-            Material.PUMPKIN_STEM,
-        )
+    private val plantBlocks = listOf(
+        Material.CARROTS,
+        Material.POTATO,
+        Material.WHEAT,
+        Material.BEETROOTS,
+        Material.MELON_STEM,
+        Material.PUMPKIN_STEM,
+    )
 
-        return growableBlocks.contains(block.type)
+    private val saplingBlocks = listOf(
+        Material.OAK_SAPLING,
+        Material.SPRUCE_SAPLING,
+        Material.BIRCH_SAPLING,
+        Material.JUNGLE_SAPLING,
+        Material.ACACIA_SAPLING,
+        Material.DARK_OAK_SAPLING,
+        Material.CRIMSON_FUNGUS,
+        Material.WARPED_FUNGUS,
+        Material.CHERRY_SAPLING,
+        Material.MANGROVE_PROPAGULE,
+    )
+
+    private fun isGrowable(block: Block): Boolean {
+        return plantBlocks.contains(block.type) || saplingBlocks.contains(block.type)
     }
 }
