@@ -1,6 +1,9 @@
 name: TwerkGrowth
 version: 1.0
 main: dev.dasischbims.twerkgrowth.Main
+author: dasischbims
+website: https://github.com/DasIschBims/twerkgrowth
+description: TwerkGrowth is a plugin that allows you to grow trees and plants by twerking on them.
 api-version: "1.20"
 commands:
   tgr:
