@@ -26,12 +26,6 @@ version = "1.0"
 description = "Twerk Growth"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-publishing {
-    publications.create<MavenPublication>("maven") {
-        from(components["java"])
-    }
-}
-
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "17"
 }

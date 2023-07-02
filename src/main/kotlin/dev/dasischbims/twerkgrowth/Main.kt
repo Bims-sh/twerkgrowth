@@ -1,13 +1,21 @@
 package dev.dasischbims.twerkgrowth
 
+import dev.dasischbims.twerkgrowth.util.Logger
 import org.bukkit.plugin.java.JavaPlugin
 
+lateinit var INSTANCE: Main
 class Main : JavaPlugin() {
     override fun onEnable() {
-        // Plugin startup logic
+        INSTANCE = this
+        Logger.console.info("Plugin enabled!")
+    }
+
+    override fun onLoad() {
+        INSTANCE = this
+        Logger.console.info("Plugin loaded!")
     }
 
     override fun onDisable() {
-        // Plugin shutdown logic
+        Logger.console.info("Plugin disabled!")
     }
 }
